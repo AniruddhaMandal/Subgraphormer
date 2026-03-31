@@ -156,6 +156,7 @@ for epoch in pbar:
                     test_metric=test_metric, best_metrics=best_metrics)
     u_log.set_posfix(optim=optim, loss_list=loss_list, val_metric=val_metric,
                      test_metric=test_metric, pbar=pbar)
+    print(f"Epoch {epoch:04d} | Train Loss: {np.mean(loss_list):.4f} | Val MAE: {val_metric:.4f} | Test MAE: {test_metric:.4f} | Best Val: {best_metrics['val_loss']:.4f} @ epoch {best_metrics['epoch']}")
     u_train.sched_step(cfg=cfg, sched=sched, val_metric=val_metric)
 
 wandb.finish()
